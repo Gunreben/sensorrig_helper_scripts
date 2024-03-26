@@ -92,5 +92,5 @@ echo "/mnt/${swapsize}.swap  none  swap  sw 0  0" | sudo tee -a /etc/fstab
 echo "Adding $(whoami) to the Docker group..."
 sudo usermod -aG docker $(whoami)
 
-echo "Setup complete. Please reboot for all changes to take effect."
+echo "Setup complete. Please reboot/logout for all changes to take effect."
 
