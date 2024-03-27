@@ -92,5 +92,31 @@ echo "/mnt/${swapsize}.swap  none  swap  sw 0  0" | sudo tee -a /etc/fstab
 echo "Adding $(whoami) to the Docker group..."
 sudo usermod -aG docker $(whoami)
 
+# Add your username here or dynamically retrieve it
+USERNAME=$(whoami)
+
+# Create a systemd service to set permissions at startup
+echo "Creating a systemd service to ensure permissions are set correctly on boot..."
+sudo tee /etc/systemd/system/set-permissions.service > /dev/null <<EOF
+[Unit]
+Description=Set permissions for /mnt/docker and other necessary directories
+
+[Service]
+Type=oneshot
+ExecStart=/bin/chown -R $USERNAME:$USERNAME /mnt
+ExecStart+=/bin/chmod -R 755 /mnt
+# Add any other permission modifications you need
+# ExecStart+=/bin/chmod -R 755 /another/directory
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Reload systemd, enable and start the service
+echo "Enabling and starting the set-permissions service..."
+sudo systemctl daemon-reload
+sudo systemctl enable set-permissions.service
+sudo systemctl start set-permissions.service
+
 echo "Setup complete. Please reboot/logout for all changes to take effect."
 

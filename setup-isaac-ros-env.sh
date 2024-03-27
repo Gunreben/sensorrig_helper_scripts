@@ -4,10 +4,10 @@
 
 # Create the workspace directory
 mkdir -p /mnt/workspaces/isaac_ros-dev/src
-
+source ~/.bashrc
 # Add ISAAC_ROS_WS variable to .bashrc if not already present
 if ! grep -q "export ISAAC_ROS_WS=/mnt/workspaces/isaac_ros-dev/" ~/.bashrc; then
-  echo "export ISAAC_ROS_WS=/mnt/workspaces/isaac_ros-dev/" >> ~/.bashrc
+  sudo echo "export ISAAC_ROS_WS=/mnt/workspaces/isaac_ros-dev/" >> ~/.bashrc
   # Apply changes made to .bashrc
   source ~/.bashrc
 else
@@ -68,8 +68,9 @@ done
 # Setup and run necessary scripts
 if [ -d "isaac_ros_common" ]; then
   cd isaac_ros_common || exit
+  source ~/.bashrc
   ./scripts/setup_zed_udev-rules.sh  # Necessary to access zed via USB
-  sudo -u user ./scripts/run_dev.sh  # Builds, installs all dependencies, and runs the container
+  sudo -u user ./scripts/run_dev.sh /mnt/workspaces/isaac_ros-dev/ # Builds, installs all dependencies, and runs the container
 else
   echo "isaac_ros_common directory does not exist. Skipping setup scripts."
 fi
