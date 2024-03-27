@@ -4,6 +4,8 @@
 
 # Create the workspace directory
 mkdir -p /mnt/workspaces/isaac_ros-dev/src
+sudo chown -R user:user /mnt/workspaces
+
 source ~/.bashrc
 # Add ISAAC_ROS_WS variable to .bashrc if not already present
 if ! grep -q "export ISAAC_ROS_WS=/mnt/workspaces/isaac_ros-dev/" ~/.bashrc; then
@@ -54,16 +56,37 @@ URLS=(
   "https://github.com/Gunreben/ouster-ros.git"
   "https://github.com/Gunreben/blickfeld_qb2_ros2_driver.git"
   "https://github.com/Gunreben/isaac_ros_common.git"
-  "https://github.com/stereolabs/zed-ros2-wrapper --recurse-submodules"
+  "https://github.com/stereolabs/zed-ros2-wrapper"
+)
+
+BRANCHES=(
+  "" # Default branch for arkvision_six_cameras
+  "ros2" # Specific branch for ouster-ros
+  "" # Default branch for blickfeld_qb2_ros2_driver
+  "" # Default branch for isaac_ros_common
+  "" # Default branch for zed-ros2-wrapper
+)
+
+SUBMODULES=(
+  "" # No submodules for arkvision_six_cameras
+  "--recurse-submodules" # Submodules for ouster-ros
+  "" # No submodules for blickfeld_qb2_ros2_driver
+  "" # No submodules for isaac_ros_common
+  "--recurse-submodules" # Submodules for zed-ros2-wrapper
 )
 
 for i in "${!REPOS[@]}"; do
   if [ ! -d "${REPOS[$i]}" ]; then
-    git clone ${URLS[$i]}
+    if [ -z "${BRANCHES[$i]}" ]; then
+      git clone ${SUBMODULES[$i]} "${URLS[$i]}"
+    else
+      git clone -b "${BRANCHES[$i]}" ${SUBMODULES[$i]} "${URLS[$i]}"
+    fi
   else
     echo "${REPOS[$i]} already cloned."
   fi
 done
+
 
 # Setup and run necessary scripts
 if [ -d "isaac_ros_common" ]; then
