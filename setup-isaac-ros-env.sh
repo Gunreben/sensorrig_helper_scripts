@@ -87,12 +87,12 @@ for i in "${!REPOS[@]}"; do
   fi
 done
 
-
 # Setup and run necessary scripts
 if [ -d "isaac_ros_common" ]; then
   cd isaac_ros_common || exit
   source ~/.bashrc
-  ./scripts/setup_zed_udev-rules.sh  # Necessary to access zed via USB
+  chmod +x /scripts/setup_zed_udev-rules.sh
+  sudo ./scripts/setup_zed_udev-rules.sh  # Necessary to access zed via USB
   sudo -u user ./scripts/run_dev.sh /mnt/workspaces/isaac_ros-dev/ # Builds, installs all dependencies, and runs the container
 else
   echo "isaac_ros_common directory does not exist. Skipping setup scripts."
