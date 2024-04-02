@@ -27,7 +27,7 @@ docker_cmd="docker run -it --rm \
     --name isaac_ros_dev-aarch64-container \
     --runtime nvidia \
     --user=admin \
-    --entrypoint /usr/local/bin/scripts/plain_entrypoint.sh \
+    --entrypoint /usr/local/bin/scripts/publisher_launch_entrypoint.sh \
     --workdir /workspaces/isaac_ros-dev \
     isaac_ros_dev-aarch64 \
     /bin/bash"
