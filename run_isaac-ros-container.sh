@@ -23,7 +23,7 @@ docker_cmd="docker run -it --rm \
     -v /mnt/workspaces/isaac_ros-dev/:/workspaces/isaac_ros-dev \
     -v /dev/*:/dev/* \
     -v /etc/localtime:/etc/localtime:ro \
-    -v /ros_ws/:/ros_ws/ \
+    -v /mnt/data:/data \
     --name isaac_ros_dev-aarch64-container \
     --runtime nvidia \
     --user=admin \

@@ -6,6 +6,10 @@
 mkdir -p /mnt/workspaces/isaac_ros-dev/src
 sudo chown -R user:user /mnt/workspaces
 
+# Create the workspace directory
+mkdir -p /mnt/data
+sudo chown -R user:user /mnt/data
+
 source ~/.bashrc
 # Add ISAAC_ROS_WS variable to .bashrc if not already present
 if ! grep -q "export ISAAC_ROS_WS=/mnt/workspaces/isaac_ros-dev/" ~/.bashrc; then
