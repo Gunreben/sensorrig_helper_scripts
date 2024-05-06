@@ -1,0 +1,149 @@
+.App-header {
+  text-align: center;
+  color: #fff;
+  background-color: #333;
+  padding: 20px;
+}
+
+.camera-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.camera-feed {
+  border: 2px solid #555;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #222;
+}
+
+.camera-feed img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.disk-space {
+  margin-top: 20px;
+  background: #222;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.record-button {
+  background-color: #4CAF50;  /* Green when not recording */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+.record-button.recording {
+  background-color: #ff4136;  /* Red when recording */
+}
+
+.nav-bar {
+  margin-bottom: 0px;
+  background-color: #222;
+  padding: 10px 0;
+}
+
+.nav-bar a {
+  color: white;
+  padding: 10px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.maximized-image img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.maximized-image-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.maximized-image-overlay img {
+  max-height: 90%;  /* Limits the image size but keeps it large */
+  max-width: 90%;   /* Prevents the image from being too wide */
+  border-radius: 8px; /* Optional: Adds rounded corners to the image */
+}
+
+.debug {
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.debug ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.debug li {
+  margin: 8px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+}
