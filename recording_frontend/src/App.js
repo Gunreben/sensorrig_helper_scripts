@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Viewer from './Viewer';
 import Debug from './Debug';
+import Lights from './Lights';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Viewer />} />
+          <Route path="/lights" element={<Lights />} />
           <Route path="/debug" element={<Debug />} />
         </Routes>
       </div>

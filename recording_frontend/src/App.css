@@ -147,3 +147,63 @@ button {
   width: 80%;
   max-width: 600px;
 }
+.controls.octagon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.channel-control {
+  flex: 1 0 21%; /* Adjusts to allow wrapping in an octagonal shape */
+  text-align: center;
+  margin: 10px;
+}
+
+
+button:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s;
+}
+
+.button.off {
+  background-color: #ff4136;  /* Red when the button indicates turning off */
+}
+
+.button.on {
+  background-color: #4CAF50;  /* Green when the button indicates turning on */
+}
+
+
+
+.channel-control:nth-child(8n+1), .channel-control:nth-child(8n+8) {
+  order: 1;
+}
+
+.channel-control:nth-child(8n+2), .channel-control:nth-child(8n+7) {
+  order: 2;
+}
+
+.channel-control:nth-child(8n+3), .channel-control:nth-child(8n+6) {
+  order: 3;
+}
+
+.channel-control:nth-child(8n+4), .channel-control:nth-child(8n+5) {
+  order: 4;
+}
