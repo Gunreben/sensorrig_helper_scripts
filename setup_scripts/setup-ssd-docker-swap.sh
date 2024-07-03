@@ -17,7 +17,7 @@ echo "Enter the UUID of your SSD:"
 read uuid
 
 # Ask for SWAP size
-echo "Enter the size of SWAP space you want to allocate (e.g., 16G):"
+echo "Enter the size of SWAP space you want to allocate (e.g., 32 for 32GB):"
 read swapsize
 
 # Backup fstab
@@ -37,6 +37,7 @@ echo "Updating package list and installing git, python3-pip..."
 sudo apt-get update && sudo apt-get install -y git python3-pip
 
 # Clone jetson-containers repo
+cd /mnt/
 echo "Cloning jetson-containers repository..."
 git clone --depth=1 https://github.com/Gunreben/jetson-containers
 cd jetson-containers || exit
@@ -74,19 +75,19 @@ sudo systemctl disable nvzramconfig
 
 # Allocate SWAP file
 echo "Allocating SWAP file of size $swapsize..."
-sudo fallocate -l $swapsize /mnt/${swapsize}.swap
+sudo fallocate -l ${swapsize}G /mnt/${swapsize}GB.swap
 
 # Format SWAP file
 echo "Formatting SWAP file..."
-sudo mkswap /mnt/${swapsize}.swap
+sudo mkswap /mnt/${swapsize}GB.swap
 
 # Enable SWAP file
 echo "Enabling SWAP file..."
-sudo swapon /mnt/${swapsize}.swap
+sudo swapon /mnt/${swapsize}GB.swap
 
 # Update fstab with SWAP
 echo "Updating /etc/fstab with SWAP information..."
-echo "/mnt/${swapsize}.swap  none  swap  sw 0  0" | sudo tee -a /etc/fstab
+echo "/mnt/${swapsize}GB.swap  none  swap  sw 0  0" | sudo tee -a /etc/fstab
 
 # Add user to Docker group
 echo "Adding $(whoami) to the Docker group..."

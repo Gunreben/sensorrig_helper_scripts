@@ -91,6 +91,11 @@ for i in "${!REPOS[@]}"; do
   fi
 done
 
+#dirty checkout to correct commit for zed-sdk in use
+cd zed-ros2-wrapper
+git checkout 77a043a
+cd ..
+
 # Setup and run necessary scripts
 if [ -d "isaac_ros_common" ]; then
   cd isaac_ros_common || exit
