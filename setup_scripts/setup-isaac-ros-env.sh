@@ -60,7 +60,7 @@ URLS=(
   "https://github.com/Gunreben/ouster-ros.git"
   "https://github.com/Gunreben/blickfeld_qb2_ros2_driver.git"
   "https://github.com/Gunreben/isaac_ros_common.git"
-  "https://github.com/Gunreben/zed-ros2-wrapper.git"
+  "https://github.com/stereolabs/zed-ros2-wrapper.git"
 )
 
 BRANCHES=(
@@ -95,6 +95,7 @@ done
 cd zed-ros2-wrapper
 git checkout 77a043a
 cd ..
+git submodule update --init --recursive # set back all submodules so they fit to the commit !!! NOT CHECKED BUT SHOULD WORK
 
 # Setup and run necessary scripts
 if [ -d "isaac_ros_common" ]; then
