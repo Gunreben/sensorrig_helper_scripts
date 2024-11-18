@@ -60,7 +60,7 @@ URLS=(
   "https://github.com/Gunreben/ouster-ros.git"
   "https://github.com/Gunreben/blickfeld_qb2_ros2_driver.git"
   "https://github.com/Gunreben/isaac_ros_common.git"
-  "https://github.com/stereolabs/zed-ros2-wrapper"
+  "https://github.com/Gunreben/zed-ros2-wrapper.git"
 )
 
 BRANCHES=(
