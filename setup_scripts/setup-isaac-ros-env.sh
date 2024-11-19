@@ -61,6 +61,7 @@ URLS=(
   "https://github.com/Gunreben/blickfeld_qb2_ros2_driver.git"
   "https://github.com/Gunreben/isaac_ros_common.git"
   "https://github.com/stereolabs/zed-ros2-wrapper.git"
+  "https://github.com/Gunreben/sensorrig_ros_control_backend.git"
 )
 
 BRANCHES=(
@@ -69,6 +70,7 @@ BRANCHES=(
   "" # Default branch for blickfeld_qb2_ros2_driver
   "" # Default branch for isaac_ros_common
   "" # Default branch for zed-ros2-wrapper
+  "" # Default branch for control backend
 )
 
 SUBMODULES=(
@@ -77,6 +79,7 @@ SUBMODULES=(
   "" # No submodules for blickfeld_qb2_ros2_driver
   "" # No submodules for isaac_ros_common
   "--recurse-submodules" # Submodules for zed-ros2-wrapper
+  "" # No submodules for flask backend
 )
 
 for i in "${!REPOS[@]}"; do
